@@ -2,48 +2,46 @@
 function Player(name) {
   this.name = name;
   this.round = [];
-  this.totalScore = [];
+  this.totalScore = 10;
 }
 
 Player.prototype.rollDice = function() {
-  var diceRoll = (Math.floor(Math.random() * (7-1)) + 1);
-    if (diceRoll === 1) {
-      this.round = [];
-      return
-      console.log(this.round);
+  var number = (Math.floor(Math.random() * (7-1)) + 1);
+    if (number === 1) {
+      this.round = []; //returns round to zero
+    } else {
+      this.round.push(number);
+      return number;
+    }
+};
 
-  } else {
-       this.round.push(diceRoll);
-       return this.round;
-
-  }
+Player.prototype.hold = function() {
+    var subtotal = 0;
+    var summands = this.round;
+    summands.forEach(function(summand) {
+      subtotal += summand;
+    })
+    this.round = subtotal + this.totalScore;
+    return this.round;
 };
 
 
 
-//add numbers in round array
-  // Player.prototype.add = function() {
-  //                             .reduce(a, b)
-  // }
 
-
-// .reduce()
 
 //Front-end Logic
-$(document).ready(function(){
-  $("form#game").submit(function(event){
-    event.preventDefault();
-    // var playerName = $("input#name").val();
-    var numberOne;
-
-    var newPlayer = new Player($("input#name").val());
-    var randomNumber = newPlayer.rollDice(numberOne);
-
-    console.log(randomNumber);
-
-    $("#output").text(newPlayer.name);
-    $("#output").text(newPlayer.newTotal);
-
-    console.log("end of function");
-  });
-});
+// $(document).ready(function(){
+//   $("form#game").submit(function(event){
+//     event.preventDefault();
+//     var number;
+//     // var playerName = $("input#name").val();
+//
+//     // // var newPlayer = new Player($("input#name").val());
+//     var randomNumber = Player.prototype.rollDice(number);
+//
+//     // $("#output").text(newPlayer.name);
+//     // $("#output").text(newPlayer.newTotal);
+//
+//     console.log("this is randomNumber " + randomNumber);
+//   });
+// });
