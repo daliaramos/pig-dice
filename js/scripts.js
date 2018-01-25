@@ -2,7 +2,8 @@
 function Player(name) {
   this.name = name;
   this.round = [];
-  this.totalScore = [];
+  this.roundTotal = 0; //this changed from an array to an integer
+  this.totalScore = 0;
 }
 
 Player.prototype.rollDice = function() {
@@ -10,24 +11,23 @@ Player.prototype.rollDice = function() {
     if (number === 1) {
       this.round = []; //returns round to zero
     } else {
-      this.round.push(number);
+      this.round.push(number); // this is an array
       return number;
     }
 };
 
 Player.prototype.hold = function() {
-  // var subtotal = 0;
+  var subtotal = 0;
   for (var index = 0; index < this.round.length; index += 1) {
-    this.round += this.round[index];
+    subtotal += this.round[index]; // this return as a single integer
   }
-    return this.round = this.round + this.totalScore ;
+  this.roundTotal = subtotal;
+  this.round = []; // clears the array back to zero
 };
 
-
 Player.prototype.addScores = function() {
-  var runningTotal = this.totalScore.push(this.round);
-    console.log(runningTotal);
-    return runningTotal;
+  this.totalScore += this.roundTotal;
+  this.roundTotal = 0;
 };
 
 
