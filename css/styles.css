@@ -1,0 +1,15 @@
+.container {
+  margin-left: 20px;
+}
+#name {
+  margin-bottom: 20px;
+}
+
+.output {
+  margin: 30px;
+  background-color: yellow;
+}
+
+#roundTotal, #totalScore {
+  margin: 30px;
+}

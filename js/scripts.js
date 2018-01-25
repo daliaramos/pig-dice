@@ -12,7 +12,9 @@ Player.prototype.rollDice = function() {
       this.round = []; //returns round to zero
     } else {
       this.round.push(number); // this is an array
-      return number;
+      // return number;
+      console.log(this.round);
+      console.log(number);
     }
 };
 
@@ -31,21 +33,33 @@ Player.prototype.addScores = function() {
 };
 
 
-
-
 //Front-end Logic
-// $(document).ready(function(){
-//   $("form#game").submit(function(event){
-//     event.preventDefault();
-//     var number;
-//     // var playerName = $("input#name").val();
-//
-//     // // var newPlayer = new Player($("input#name").val());
-//     var randomNumber = Player.prototype.rollDice(number);
-//
-//     // $("#output").text(newPlayer.name);
-//     // $("#output").text(newPlayer.newTotal);
-//
-//     console.log("this is randomNumber " + randomNumber);
-//   });
-// });
+$(document).ready(function(){
+ $("form#game").submit(function(event){
+     event.preventDefault();
+     var name = $("input#name").val();
+     var newPlayer = new Player(name);
+
+     $("#call").text(newPlayer.name);
+
+     $("button#rollDice").click(function(event) {
+       event.preventDefault();
+        newPlayer.rollDice();
+        console.log(newPlayer.round);
+
+      $("#numberArray").text(newPlayer.round);
+    });
+
+    $("button#hold").click(function(event){
+      event.preventDefault();
+      newPlayer.hold();
+      $("#roundTotal").text(newPlayer.roundTotal);
+
+    });
+    $("button#score").click(function(event){
+        event.preventDefault();
+        newPlayer.addScores();
+        $("#totalScore").text(newPlayer.totalScore);
+    });
+   });
+ });
