@@ -2,7 +2,7 @@
 function Player(name) {
   this.name = name;
   this.round = [];
-  this.totalScore = 10;
+  this.totalScore = [];
 }
 
 Player.prototype.rollDice = function() {
@@ -16,15 +16,19 @@ Player.prototype.rollDice = function() {
 };
 
 Player.prototype.hold = function() {
-    var subtotal = 0;
-    var summands = this.round;
-    summands.forEach(function(summand) {
-      subtotal += summand;
-    })
-    this.round = subtotal + this.totalScore;
-    return this.round;
+  // var subtotal = 0;
+  for (var index = 0; index < this.round.length; index += 1) {
+    this.round += this.round[index];
+  }
+    return this.round = this.round + this.totalScore ;
 };
 
+
+Player.prototype.addScores = function() {
+  var runningTotal = this.totalScore.push(this.round);
+    console.log(runningTotal);
+    return runningTotal;
+};
 
 
 
