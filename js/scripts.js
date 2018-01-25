@@ -1,29 +1,49 @@
 //Back-end Logic
-function Player(name, total) {
+function Player(name) {
   this.name = name;
-  // this.number = number;
-  this.total = total;
+  this.round = [];
+  this.totalScore = [];
 }
 
-var number;
+Player.prototype.rollDice = function() {
+  var diceRoll = (Math.floor(Math.random() * (7-1)) + 1);
+    if (diceRoll === 1) {
+      this.round = [];
+      return
+      console.log(this.round);
 
-Player.prototype.getRandomInteger = function() {
-  number = (Math.floor(Math.random() * (7-1)) + 1);
-  return number
-}
-
-Player.prototype.add = function(number) {
-  // for (var i = 1; i <= number; i++) {
-    if (number === 1) {
-    var newTotal = 0;
   } else {
-    var newTotal = this.total + number;
+       this.round.push(diceRoll);
+       return this.round;
+
   }
-    return newTotal;
-  }
-
-var newPlayer = new Player("Hannah", 10);
+};
 
 
+
+//add numbers in round array
+  // Player.prototype.add = function() {
+  //                             .reduce(a, b)
+  // }
+
+
+// .reduce()
 
 //Front-end Logic
+$(document).ready(function(){
+  $("form#game").submit(function(event){
+    event.preventDefault();
+    // var playerName = $("input#name").val();
+    var numberOne;
+
+    var newPlayer = new Player($("input#name").val());
+    var randomNumber = newPlayer.rollDice(numberOne);
+
+    console.log(randomNumber);
+
+    $("#output").text(newPlayer.name);
+    $("#output").text(newPlayer.newTotal);
+
+    console.log("end of function");
+  });
+});
