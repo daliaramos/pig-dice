@@ -38,28 +38,57 @@ $(document).ready(function(){
  $("form#game").submit(function(event){
      event.preventDefault();
      var name = $("input#name").val();
-     var newPlayer = new Player(name);
+     var newPlayer1 = new Player(name);
 
-     $("#call").text(newPlayer.name);
+     $("#call").text(newPlayer1.name);
 
      $("button#rollDice").click(function(event) {
        event.preventDefault();
-        newPlayer.rollDice();
-        console.log(newPlayer.round);
+        newPlayer1.rollDice();
+        console.log(newPlayer1.round);
 
-      $("#numberArray").text(newPlayer.round);
+      $("#numberArray").text(newPlayer1.round);
     });
 
     $("button#hold").click(function(event){
       event.preventDefault();
-      newPlayer.hold();
-      $("#roundTotal").text(newPlayer.roundTotal);
+      newPlayer1.hold();
+      $("#roundTotal").text(newPlayer1.roundTotal);
 
     });
     $("button#score").click(function(event){
         event.preventDefault();
-        newPlayer.addScores();
-        $("#totalScore").text(newPlayer.totalScore);
+        newPlayer1.addScores();
+        $("#totalScore").text(newPlayer1.totalScore);
     });
-   });
- });
+  });
+
+// PLAYER TWO
+$("form#game2").submit(function(event){
+    event.preventDefault();
+     var name = $("input#name2").val();
+     var newPlayer2 = new Player(name);
+
+    $("#call2").text(newPlayer2.name);
+
+    $("button#rollDice2").click(function(event) {
+      event.preventDefault();
+       newPlayer2.rollDice();
+       console.log(newPlayer2.round);
+
+     $("#numberArray2").text(newPlayer2.round);
+    });
+
+    $("button#hold2").click(function(event){
+     event.preventDefault();
+     newPlayer2.hold();
+     $("#roundTotal2").text(newPlayer2.roundTotal);
+
+    });
+    $("button#score2").click(function(event){
+       event.preventDefault();
+       newPlayer2.addScores();
+       $("#totalScore2").text(newPlayer2.totalScore);
+    });
+  });
+});

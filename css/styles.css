@@ -1,7 +1,7 @@
 .container {
   margin-left: 20px;
 }
-#name {
+#name, #name2 {
   margin-bottom: 20px;
 }
 
@@ -10,6 +10,6 @@
   background-color: yellow;
 }
 
-#roundTotal, #totalScore {
+#roundTotal, #totalScore, #roundTotal2, #totalScore2 {
   margin: 30px;
 }
